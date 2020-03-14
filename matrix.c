@@ -16,16 +16,21 @@ double get(matrix m, int row, int column){
 }
 
 matrix parse_file_input(FILE* input){
-  matrix m;
-  if (fscanf(input, "%d %d", &(m.row_count), &(m.column_count)) != 2){
+  int cols, rows;
+  if (fscanf(input, "%d %d", &(rows), &(cols)) != 2){
     perror("Error");
     fprintf(stderr,"Error reading from filedescriptor \n");
     fprintf(stderr,"Function = %s\n", __FUNCTION__);
     exit(-1);
   } else {
-
-  }
+    matrix m = create_matrix(rows, cols);
+    for(int i = 0; i < m.row_count; i++){
+      for(int j = 0; j < m.column_count; j++){
+        fscanf(input, "%lf", m.data + (i*m.row_count + j) );
+      }
+    }
   return m;
+  }
 }
 
 void destroy_matrix(matrix m){
