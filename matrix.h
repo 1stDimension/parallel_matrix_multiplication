@@ -9,4 +9,6 @@ typedef struct matrix
 
 matrix create_matrix(int number_columns, int number_rows);
 
+inline double get(matrix m, int row, int column);
+
 void destroy_matrix(matrix m);

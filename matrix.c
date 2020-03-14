@@ -9,6 +9,10 @@ matrix create_matrix(int number_columns, int number_rows){
   return m;
 }
 
+inline double get(matrix m, int row, int column){
+  return m.data[ m.row_count * row + column ];
+}
+
 void destroy_matrix(matrix m){
   free(m.data);
 }
