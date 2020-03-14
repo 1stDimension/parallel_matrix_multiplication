@@ -8,3 +8,5 @@ typedef struct matrix
 } matrix, * matrix_ptr;
 
 matrix create_matrix(int number_columns, int number_rows);
+
+void destroy_matrix(matrix m);
