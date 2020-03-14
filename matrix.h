@@ -6,3 +6,5 @@ typedef struct matrix
   int row_count;
   double* data;
 } matrix, * matrix_ptr;
+
+matrix create_matrix(int number_columns, int number_rows);
