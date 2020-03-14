@@ -9,7 +9,7 @@ matrix create_matrix(int number_columns, int number_rows){
   return m;
 }
 
-inline double get(matrix m, int row, int column){
+double get(matrix m, int row, int column){
   return m.data[ m.row_count * row + column ];
 }
 
