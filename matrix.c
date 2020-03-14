@@ -3,11 +3,11 @@
 #include <errno.h>
 #include "matrix.h"
 
-matrix create_matrix(int number_columns, int number_rows){
+matrix create_matrix(int number_rows, int number_columns){
   matrix m;
-  m.column_count = number_columns;
   m.row_count = number_rows;
-  m.data = malloc(sizeof(*m.data) * number_rows * number_columns);
+  m.column_count = number_columns;
+  m.data = malloc(sizeof(*m.data) * number_rows * number_rows);
   return m;
 }
 
