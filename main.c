@@ -16,5 +16,6 @@ int main(int argc, char **argv)
   }
   matrix m = parse_file_input(file);
   fclose(file);
+  destroy_matrix(m);
   return 0;
 }
