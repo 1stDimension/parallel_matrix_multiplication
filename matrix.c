@@ -1,5 +1,7 @@
-#include "matrix.h"
+#include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
+#include "matrix.h"
 
 matrix create_matrix(int number_columns, int number_rows){
   matrix m;
