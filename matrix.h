@@ -11,5 +11,6 @@ matrix create_matrix(int number_columns, int number_rows);
 
 double get(matrix m, int row, int column);
 
+matrix parse_file_input(FILE* input);
 
 void destroy_matrix(matrix m);
