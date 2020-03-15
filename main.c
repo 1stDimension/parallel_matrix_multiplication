@@ -5,6 +5,14 @@
 
 matrix handlefiles(const char* filename);
 
+typedef struct {
+  int begin;
+  int end;
+  matrix a;
+  matrix b;
+  matrix result;
+} thread_args;
+
 int main(int argc, char **argv)
 {
   if (argc < 2) {
