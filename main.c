@@ -22,15 +22,11 @@ int main(int argc, char **argv)
     matrix first = handlefiles(first_file);
     matrix second = handlefiles(second_file);
 
-    file = fopen(second_file, "r");
-    if (file == NULL){
-      perror("Error");
-      exit(-1);
-    }
-    matrix second = parse_file_input(file);
-    fclose(file);
     matrix result = create_matrix(first.row_count, second.column_count);
     // adding batching
+    int last_batch = first.row_count % thread_count;
+    int batch = (first.row_count + last_batch )/ thread_count;
+    last_batch = last_batch == 0 ? thread_count : last_batch;
     // Adding thread creation
     for(int i = 0; i < first.row_count; i++){
       for(int j = 0; j < second.column_count; j++){
