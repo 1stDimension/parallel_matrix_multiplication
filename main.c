@@ -13,7 +13,11 @@ int main(int argc, char **argv)
   } else if( argc < 4){
     printf("Missing 2nd filename");
   } else {
-    FILE *file = fopen(argv[2], "r");
+    int thread_count = atoi(argv[1]);
+    const char * first_file = argv[2];
+    const char * second_file = argv[3];
+
+    FILE *file = fopen(first_file, "r");
     if (file == NULL){
       perror("Error");
       exit(-1);
@@ -21,7 +25,7 @@ int main(int argc, char **argv)
     matrix first = parse_file_input(file);
     fclose(file);
 
-    file = fopen(argv[3], "r");
+    file = fopen(second_file, "r");
     if (file == NULL){
       perror("Error");
       exit(-1);
@@ -35,10 +39,24 @@ int main(int argc, char **argv)
         set(result, i, j, entry);
       }
     }
+    printf("First\n");
+    printf("*******\n");
+    print_matrix(first);
+    printf("*******\n");
+    printf("Second\n");
+    printf("*******\n");
+    print_matrix(second);
+    printf("*******\n");
+
+    printf("Result\n");
+    printf("*******\n");
+    print_matrix(result);
+    printf("*******\n");
 
 
     destroy_matrix(first);
     destroy_matrix(second);
+    destroy_matrix(result);
     return 0;
     }
   return -1;
