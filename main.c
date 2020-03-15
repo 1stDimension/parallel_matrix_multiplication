@@ -33,6 +33,8 @@ int main(int argc, char **argv)
     matrix second = parse_file_input(file);
     fclose(file);
     matrix result = create_matrix(first.row_count, second.column_count);
+    // adding batching
+    // Adding thread creation
     for(int i = 0; i < first.row_count; i++){
       for(int j = 0; j < second.column_count; j++){
         double entry = matrix_row_column(first, i, second, j);
