@@ -60,6 +60,7 @@ int main(int argc, char **argv)
     args.a = first;
     args.b = second;
     args.result = result;
+
     pthread_create(threads,NULL , thread_function, (void *) &args);
     for (int i = 1; i < thread_count ; i++)
     {
