@@ -14,7 +14,20 @@ typedef struct {
   matrix result;
 } thread_args;
 
-void * thread_function(void* args) {
+void * thread_function(void* kargs) {
+  thread_args* args = (thread_args*) kargs;
+  int begin = args->begin;
+  int end = args->end;
+  matrix a = args->a;
+  matrix b = args->b;
+  matrix result = args->result;
+  for(int i = begin; i < end; i++){
+    for(int j = 0; j < b.column_count; j++){
+      double entry = matrix_row_column(a, i, b, j);
+      set(result, i, j, entry);
+    }
+  }
+  
   printf("I'm a thread\n");
   return NULL;
 }
@@ -59,10 +72,20 @@ int main(int argc, char **argv)
         set(result, i, j, entry);
       }
     }
+
+    double partial_frobenious_norm_squared[thread_count];
+
     for (int i = 0; i < thread_count; i++)
     {
-      pthread_join(threads[i], NULL);
+      pthread_join(threads[i], (void*) partial_frobenious_norm_squared + i);
     }
+
+    double frobenius_norm = 0;
+    for (int i = 0; i < thread_count; i++)
+    {
+      frobenius_norm += partial_frobenious_norm_squared[i];
+    }
+    
     printf("First\n");
     printf("*******\n");
     print_matrix(first);
