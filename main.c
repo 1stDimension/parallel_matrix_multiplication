@@ -47,10 +47,10 @@ int main(int argc, char **argv)
     args.a = first;
     args.b = second;
     args.result = result;
-    pthread_create(threads[0], (void *) &args, thread_function, NULL);
+    pthread_create(threads,NULL , thread_function, (void *) &args);
     for (int i = 1; i < thread_count ; i++)
     {
-      pthread_create(threads + i, (void *) &args, thread_function, NULL);
+      pthread_create(threads + i, NULL, thread_function, (void *) &args);
     }
     for (int i = 0; i < thread_count; i++)
     {
