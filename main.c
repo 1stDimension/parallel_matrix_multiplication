@@ -16,9 +16,22 @@ int main(int argc, char **argv)
     perror("Error");
     exit(-1);
   }
-  matrix m = parse_file_input(file);
+  matrix first = parse_file_input(file);
   fclose(file);
-  destroy_matrix(m);
+
+  file = fopen(argv[1], "r");
+  if (file == NULL){
+    perror("Error");
+    exit(-1);
+  }
+  matrix second = parse_file_input(file);
+  fclose(file);
+
+  double result = matrix_row_column(first, 0, second, 0);
+  printf("answer = %lf\n", result);
+
+  destroy_matrix(first);
+  destroy_matrix(second);
   return 0;
   }
   return -1;
