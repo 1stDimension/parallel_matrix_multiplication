@@ -13,6 +13,11 @@ typedef struct {
   matrix result;
 } thread_args;
 
+void * thread_function(void* args) {
+  printf("I'm a thread\n");
+  return NULL;
+}
+
 int main(int argc, char **argv)
 {
   if (argc < 2) {
