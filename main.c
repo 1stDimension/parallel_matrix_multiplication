@@ -40,7 +40,21 @@ int main(int argc, char **argv)
     int last_batch = first.row_count % thread_count;
     int batch = (first.row_count + last_batch )/ thread_count;
     last_batch = last_batch == 0 ? thread_count : last_batch;
-    // Adding thread creation
+    
+    pthread_t threads[thread_count];
+    thread_args args;
+    args.a = first;
+    args.b = second;
+    args.result = result;
+    pthread_create(threads[0], (void *) &args, thread_function, NULL);
+    for (int i = 1; i < thread_count ; i++)
+    {
+      pthread_create(threads + i, (void *) &args, thread_function, NULL);
+    }
+    for (int i = 0; i < thread_count; i++)
+    {
+      pthread_join(threads[i], NULL);
+    }
     for(int i = 0; i < first.row_count; i++){
       for(int j = 0; j < second.column_count; j++){
         double entry = matrix_row_column(first, i, second, j);
