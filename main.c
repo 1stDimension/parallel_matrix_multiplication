@@ -38,9 +38,9 @@ int main(int argc, char **argv)
 
     matrix result = create_matrix(first.row_count, second.column_count);
     // adding batching
-    int last_batch = first.row_count % thread_count;
-    int batch = (first.row_count + last_batch )/ thread_count;
-    last_batch = last_batch == 0 ? thread_count : last_batch;
+    int first_batch = first.row_count % thread_count;
+    int batch = (first.row_count + first_batch )/ thread_count;
+    first_batch = first_batch == 0 ? thread_count : first_batch;
     
     pthread_t threads[thread_count];
     thread_args args;
