@@ -19,13 +19,8 @@ int main(int argc, char **argv)
     const char * first_file = argv[2];
     const char * second_file = argv[3];
 
-    FILE *file = fopen(first_file, "r");
-    if (file == NULL){
-      perror("Error");
-      exit(-1);
-    }
-    matrix first = parse_file_input(file);
-    fclose(file);
+    matrix first = handlefiles(first_file);
+    matrix second = handlefiles(second_file);
 
     file = fopen(second_file, "r");
     if (file == NULL){
