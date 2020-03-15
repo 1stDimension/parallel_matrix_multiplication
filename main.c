@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include "matrix.h"
 
+matrix handlefiles(const char* filename);
+
 int main(int argc, char **argv)
 {
   if (argc < 2) {
@@ -62,4 +64,14 @@ int main(int argc, char **argv)
     return 0;
     }
   return -1;
+}
+
+matrix handlefiles(const char* filename){
+
+    FILE *file = fopen(filename, "r");
+    if (file == NULL){
+      perror("Error");
+      exit(-1);
+    }
+    return parse_file_input(file);
 }
