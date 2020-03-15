@@ -15,6 +15,11 @@ double get(matrix m, int row, int column){
   return m.data[ m.row_count * row + column ];
 }
 
+matrix matrix_multiply(matrix first, matrix second){
+  matrix m;
+  printf("Not implemented yet");
+  return m;
+}
 matrix parse_file_input(FILE* input){
   int cols, rows;
   if (fscanf(input, "%d %d", &(rows), &(cols)) != 2){
