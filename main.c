@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <errno.h>
+#include <pthread.h>
 #include <stdio.h>
 #include "matrix.h"
 
@@ -60,6 +61,10 @@ int main(int argc, char **argv)
         double entry = matrix_row_column(first, i, second, j);
         set(result, i, j, entry);
       }
+    }
+    for (int i = 0; i < thread_count; i++)
+    {
+      pthread_join(threads[i], NULL);
     }
     printf("First\n");
     printf("*******\n");
