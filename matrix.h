@@ -15,6 +15,8 @@ double get(matrix m, int row, int column);
 
 void set(matrix m, int row, int column, double value);
 
+void print_matrix(matrix m);
+
 matrix parse_file_input(FILE* input);
 
 void destroy_matrix(matrix m);

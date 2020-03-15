@@ -19,6 +19,17 @@ void set(matrix m, int row, int column, double value){
   m.data[ m.row_count * row + column ] = value;
 }
 
+void print_matrix(matrix m){
+  for(int i = 0; i < m.row_count; i++){
+    for (int j = 0; j < m.row_count -1; j++)
+    {
+      printf("%4g|",get(m, i, j));
+    }
+      printf("%4g\n", get(m, i, m.row_count - 1));
+    
+  }
+}
+
 double matrix_row_column(matrix first, int row, matrix second, int column){
   double answer = 0.0;
   if (first.column_count != second.row_count ){
