@@ -68,5 +68,7 @@ matrix handlefiles(const char* filename){
       perror("Error");
       exit(-1);
     }
-    return parse_file_input(file);
+    matrix tmp = parse_file_input(file);
+    fclose(file);
+    return tmp;
 }
