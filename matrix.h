@@ -13,6 +13,8 @@ double matrix_row_column(matrix first, int row, matrix second, int column);
 
 double get(matrix m, int row, int column);
 
+void set(matrix m, int row, int column, double value);
+
 matrix parse_file_input(FILE* input);
 
 void destroy_matrix(matrix m);

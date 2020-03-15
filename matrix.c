@@ -15,6 +15,10 @@ double get(matrix m, int row, int column){
   return m.data[ m.row_count * row + column ];
 }
 
+void set(matrix m, int row, int column, double value){
+  m.data[ m.row_count * row + column ] = value;
+}
+
 double matrix_row_column(matrix first, int row, matrix second, int column){
   double answer = 0.0;
   if (first.column_count != second.row_count ){
