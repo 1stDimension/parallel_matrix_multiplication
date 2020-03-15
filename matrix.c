@@ -15,11 +15,20 @@ double get(matrix m, int row, int column){
   return m.data[ m.row_count * row + column ];
 }
 
-matrix matrix_multiply(matrix first, matrix second){
-  matrix m;
-  printf("Not implemented yet");
-  return m;
+double matrix_row_column(matrix first, int row, matrix second, int column){
+  double answer = 0.0;
+  if (first.column_count != second.row_count ){
+    printf("Wrong dimensions\n");
+    exit(-1);
+  } else {
+    for(int i = 0; i < first.column_count; i++){
+        double tmp = get(first, row, i) * get(second, i ,column);
+        answer += tmp;
+    }
+  }
+  return answer;
 }
+
 matrix parse_file_input(FILE* input){
   int cols, rows;
   if (fscanf(input, "%d %d", &(rows), &(cols)) != 2){

@@ -9,7 +9,7 @@ typedef struct matrix
 
 matrix create_matrix(int number_columns, int number_rows);
 
-matrix matrix_multiply(matrix first, matrix second);
+double matrix_row_column(matrix first, int row, matrix second, int column);
 
 double get(matrix m, int row, int column);
 
