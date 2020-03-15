@@ -52,10 +52,7 @@ int main(int argc, char **argv)
     {
       pthread_create(threads + i, NULL, thread_function, (void *) &args);
     }
-    for (int i = 0; i < thread_count; i++)
-    {
-      pthread_join(threads[i], NULL);
-    }
+
     for(int i = 0; i < first.row_count; i++){
       for(int j = 0; j < second.column_count; j++){
         double entry = matrix_row_column(first, i, second, j);
