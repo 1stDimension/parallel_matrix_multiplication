@@ -1,4 +1,11 @@
 # parallel_matrix_multiplication
+usage: bin number_of_threads matrix_a matrix_b
+  nuber_of_threads
+
+  matrix_a
+
+  matrix_b
+
 # matrix format
 ```
 rows columns
