@@ -20,6 +20,7 @@ void set(matrix m, int row, int column, double value){
 }
 
 void print_matrix(matrix m){
+  // printf("Dimensions rows = %d cols = %d\n",m.row_count,m.column_count);
   for(int i = 0; i < m.row_count; i++){
     for (int j = 0; j < m.row_count -1; j++)
     {
